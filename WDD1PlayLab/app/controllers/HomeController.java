@@ -16,19 +16,22 @@ public class HomeController extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
-    public Result index() {
-        return ok(index.render()); //Removing (index.render.....
+
+
+
+    public Result index(String name){
+        return ok(index.render("Home", name));
     }
 
 
-    //Method to return the onSale page once GET request for this page is received
+    /*Method to return the onSale page once GET request for this page is received*/
     public Result onsale(){
-        return ok(onsale.render());
+        return ok(onsale.render("On Sale"));
     }
 
-    //Method to return the About page
+    /*Method to return the About page*/
     public Result about(){
-        return ok(about.render());
+        return ok(about.render("About"));
     }
 
 }
