@@ -11,3 +11,10 @@ GET     /message                    controllers.AsyncController.message
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+
+#Add an onsale page to the website
+GET     /onsale                     controllers.HomeController.onsale
+
+#Add an About page to the website
+GET     /about                      controllers.HomeController.about  
