@@ -1,15 +1,45 @@
 package models;
 
+import java.util.*;
+import javax.persistence.*;
+import io.ebean.*;
+import play.data.format.*;
+import play.data.validation.*;
+
+//Define the class as an Object entity for ORM mapping to Ebean
+@Entity
 public class ItemOnSale extends Model {
  
 
     // Properties
+
+    @Id //PK
     private Long id;
+
+    @Constraints.Required
     private String name;
-     private String description;
+
+    @Constraints.Required
+    private String description;
+
+    @Constraints.Required
     private int stock;
+
+    @Constraints.Required
     private double price;
+
+    //Tells Ebean ORM to use Find method of type Finder
+    //to return data from itemOnSale class
+    public static final Finder<Long, ItemOnSale> find = new Finder<>(ItemOnSale.class);
+
+    //Using the above Ebean "query", this method tells Ebean
+    //to return items in a List format
+    public static final List<ItemOnSale> findAll() {
+        return ItemOnSale.find.all();
+    }
  
+
+    
     // Default Constructor
  
     public ItemOnSale() {
@@ -49,7 +79,7 @@ public class ItemOnSale extends Model {
     }
 
     public void setDescription(String descriptionIn){
-        this description = descriptionIn;
+        this.description = descriptionIn;
     }
 
     public int getStock(){
