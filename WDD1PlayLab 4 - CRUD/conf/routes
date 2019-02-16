@@ -14,7 +14,8 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 
 #Add an onsale page to the website
-GET     /onsale                     controllers.HomeController.onsale
+GET     /onsale                     controllers.HomeController.onsale(cat:Long?=0L)
+
 
 #Add an About page to the website
 GET     /about                      controllers.HomeController.about

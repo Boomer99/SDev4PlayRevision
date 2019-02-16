@@ -28,6 +28,25 @@ public class ItemOnSale extends Model {
     @Constraints.Required
     private double price;
 
+    @ManyToOne
+    private Category category;
+
+    
+    // Default Constructor
+    public ItemOnSale() {
+
+    }
+ 
+    // Constructor to initialise object
+    public ItemOnSale(Long id, String name, String description, int stock, double price) {
+ 
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.stock = stock;
+        this.price = price;
+    }
+
     //Tells Ebean ORM to use Find method of type Finder
     //to return data from itemOnSale class
     public static final Finder<Long, ItemOnSale> find = new Finder<>(ItemOnSale.class);
@@ -36,25 +55,6 @@ public class ItemOnSale extends Model {
     //to return items in a List format
     public static final List<ItemOnSale> findAll() {
         return ItemOnSale.find.all();
-    }
- 
-
-    
-    // Default Constructor
- 
-    public ItemOnSale() {
- 
-    }
- 
-    // Constructor to initialise object
- 
-    public ItemOnSale(Long id, String name, String description, int stock, double price) {
- 
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.stock = stock;
-        this.price = price;
     }
  
     // Accessor methods
@@ -96,5 +96,13 @@ public class ItemOnSale extends Model {
 
     public void setPrice(double priceIn){
         this.price = priceIn;
+    }
+
+    public Category getCategory(){
+        return this.category;
+    }
+
+    public void setCategory(Category category){
+        this.category = category;
     }
 }
